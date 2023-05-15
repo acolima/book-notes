@@ -1,0 +1,5 @@
+<div class="app">
+  <app-dashboard (page)="changePageName($event)"></app-dashboard>
+
+  <app-content [page]="page" (homePage)="changePageName('read')"></app-content>
+</div>

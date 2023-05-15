@@ -1,0 +1,16 @@
+<div class="page">
+  <div class="search-bar">
+    <input
+      type="text"
+      placeholder="Digite o nome do livro"
+      maxlength="50"
+      [(ngModel)]="bookName"
+      (keydown)="search($event)"
+    />
+    <mat-icon (click)="searchBook()">search</mat-icon>
+  </div>
+
+  <div class="search-results">
+    <app-book [book]="book" *ngFor="let book of books"></app-book>
+  </div>
+</div>

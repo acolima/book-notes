@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="cover">
+    <img *ngIf="thumbnail; else genericCover" src="{{ thumbnail }}" />
+    <ng-template #genericCover>
+      <img src="./assets/images/generic_cover.jpg" />
+    </ng-template>
+  </div>
+  <div class="info">
+    <span class="title">
+      {{ title }}
+    </span>
+
+    <div class="authors">
+      <span *ngFor="let author of authors"> {{ author }} </span>
+    </div>
+
+    <span class="description">{{ description }}</span>
+
+    <div class="buttons">
+      <span *ngIf="added; else addTemplate"> Adicionado </span>
+
+      <ng-template #addTemplate>
+        <select name="category" id="category">
+          <option value="Lido">Lido</option>
+          <option value="Lido">Lendo</option>
+          <option value="Lido">Quero Ler</option>
+        </select>
+
+        <button>Adicionar</button>
+      </ng-template>
+    </div>
+  </div>
+</div>
