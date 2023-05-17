@@ -1,22 +1,19 @@
-.container {
-  height: 70%;
+* {
+  width: 100%;
+
+  background-color: white;
 
   border-radius: 25px;
+}
 
-  background-color: #fff;
+.display {
+  height: 70%;
 }
 
 .carousel {
   height: 25%;
-
-  border-radius: 25px;
-
-  background-color: #fff;
 }
 
 app-search-book {
   height: 100%;
-  border-radius: 25px;
-
-  background-color: #fff;
 }

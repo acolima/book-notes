@@ -1,3 +1,6 @@
+@import "theme";
+@import "variables";
+
 html:focus-within {
   scroll-behavior: smooth;
 }
@@ -86,7 +89,7 @@ video {
   margin: 0;
   padding: 0;
   border: 0;
-  font-family: "Poppins", sans-serif;
+  font-family: $font;
   vertical-align: baseline;
 }
 
@@ -104,17 +107,21 @@ nav,
 section {
   display: block;
 }
+
 body {
   line-height: 1;
 }
+
 ol,
 ul {
   list-style: none;
 }
+
 blockquote,
 q {
   quotes: none;
 }
+
 blockquote:before,
 blockquote:after,
 q:before,
@@ -122,6 +129,7 @@ q:after {
   content: "";
   content: none;
 }
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -132,7 +140,7 @@ table {
 }
 
 body {
-  background-color: #f4f6fa;
+  background-color: $primary;
   margin: 0;
 }
 

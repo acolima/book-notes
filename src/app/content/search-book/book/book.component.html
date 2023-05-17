@@ -1,22 +1,23 @@
-<div class="container">
-  <div class="cover">
+<div class="book">
+  <div class="book__cover">
     <img *ngIf="thumbnail; else genericCover" src="{{ thumbnail }}" />
     <ng-template #genericCover>
       <img src="./assets/images/generic_cover.jpg" />
     </ng-template>
   </div>
-  <div class="info">
-    <span class="title">
+
+  <div class="book__info">
+    <span class="book__info-title">
       {{ title }}
     </span>
 
-    <div class="authors">
+    <div class="book__info-authors">
       <span *ngFor="let author of authors"> {{ author }} </span>
     </div>
 
-    <span class="description">{{ description }}</span>
+    <span class="book__info-description">{{ description }}</span>
 
-    <div class="buttons">
+    <div class="book__actions">
       <span *ngIf="added; else addTemplate"> Adicionado </span>
 
       <ng-template #addTemplate>

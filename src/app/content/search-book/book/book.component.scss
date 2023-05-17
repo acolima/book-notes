@@ -1,64 +1,61 @@
-.container {
-  background-color: #dce0e9;
+@import "../../../styles/mixins";
+@import "../../../styles/theme";
 
-  min-height: 200px;
+.book {
+  background-color: $primary;
 
-  display: flex;
-}
-
-.cover {
-  width: 150px;
+  min-height: 220px;
 
   display: flex;
-  align-items: center;
-  justify-content: center;
 
-  img {
-    width: 120px;
-  }
-}
+  &__cover {
+    width: 150px;
 
-.info {
-  padding: 8px;
+    @include flex($justifyContent: center);
 
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-
-  .title {
-    font-size: 22px;
-  }
-
-  .authors {
-    display: flex;
-    gap: 15px;
-
-    span {
-      color: #d8523d;
-
-      padding: 3px;
-      border: 1px solid #d8523d;
-      border-radius: 8px;
+    img {
+      width: 120px;
     }
   }
 
-  .description {
-    height: 80px;
+  &__info {
+    padding: 8px;
 
-    overflow: scroll;
-    &::-webkit-scrollbar {
-      display: none;
+    flex: 1;
+    @include flex($direction: column);
+
+    &-title {
+      font-size: 22px;
+      color: darken($font-primary, 80%);
+    }
+
+    &-authors {
+      @include flex($gap: 15px);
+
+      span {
+        color: $accent;
+
+        padding: 3px;
+        border: 1px solid $accent;
+        border-radius: 8px;
+      }
+    }
+
+    &-description {
+      height: 80px;
+      color: $font-primary;
+
+      overflow: scroll;
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
   }
 
-  .buttons {
+  &__actions {
     width: 60%;
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flex($justifyContent: space-between);
 
     select {
       all: unset;
@@ -66,10 +63,11 @@
       width: 50%;
 
       text-align: center;
+      color: $font-primary;
     }
 
     button {
-      background-color: #d8523d;
+      background-color: $accent;
       color: #fff;
 
       padding: 10px 15px;
@@ -81,7 +79,7 @@
     }
 
     span {
-      color: #d8523d;
+      color: $accent;
 
       width: 100%;
 
