@@ -10,3 +10,16 @@
   align-items: $alignItems;
   gap: $gap;
 }
+
+@mixin loading-animation {
+  animation: skeleton-loading 1s linear infinite alternate;
+
+  @keyframes skeleton-loading {
+    0% {
+      background-color: hsl(217, 20%, 85%);
+    }
+    100% {
+      background-color: hsl(217, 20%, 90%);
+    }
+  }
+}

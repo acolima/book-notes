@@ -4,6 +4,7 @@ import { BookService } from "src/app/services/book.service";
 
 export interface SearchResults {
   items: Book[];
+  totalItems: number;
 }
 
 @Component({
@@ -16,6 +17,8 @@ export class SearchBookComponent implements OnInit {
 
   books: Book[] | undefined = [];
   bookName: string = "";
+  noResults = false;
+  loading = false;
 
   ngOnInit(): void {}
 
@@ -24,13 +27,23 @@ export class SearchBookComponent implements OnInit {
   }
 
   searchBook() {
+    this.loading = true;
+    this.books = [];
     this.bookService.searchBooks(this.bookName).subscribe({
       next: (data) => {
         this.books = data.items;
+        this.noResults = data.totalItems === 0 ? true : false;
+        this.loading = false;
       },
       error: (err) => {
         console.error(err);
       },
     });
+  }
+
+  clear() {
+    this.bookName = "";
+    this.books = [];
+    this.noResults = false;
   }
 }

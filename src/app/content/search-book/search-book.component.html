@@ -7,10 +7,21 @@
       [(ngModel)]="bookName"
       (keydown)="search($event)"
     />
+    <mat-icon (click)="clear()" *ngIf="bookName">clear</mat-icon>
     <mat-icon (click)="searchBook()">search</mat-icon>
   </div>
 
   <div class="search-page__results">
+    <div *ngIf="loading" class="skeleton">
+      <div class="skeleton-book"></div>
+      <div class="skeleton-book"></div>
+    </div>
+
     <app-book [book]="book" *ngFor="let book of books"></app-book>
+
+    <div class="no-results" *ngIf="noResults">
+      <img src="../../../assets/images/no-results.jpg" alt="no results found" />
+      <span>Não foram encontrados resultados</span>
+    </div>
   </div>
 </div>
