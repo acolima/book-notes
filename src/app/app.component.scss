@@ -3,12 +3,17 @@
 .app {
   box-sizing: border-box;
 
-  min-width: 100vw;
-  min-height: 100vh;
-
-  @include flex($gap: 25px);
+  position: relative;
 
   padding: 0 20px;
+
+  @include flex($direction: column, $gap: 0, $alignItems: flex-end);
+
+  div {
+    width: 100%;
+
+    @include flex($gap: 25px);
+  }
 }
 
 ::ng-deep app-content {

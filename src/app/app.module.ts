@@ -1,15 +1,17 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
-import { MatIconModule } from '@angular/material/icon';
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { HttpClientModule } from "@angular/common/http";
+import { MatIconModule } from "@angular/material/icon";
 
-import { AppComponent } from './app.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { ContentComponent } from './content/content.component';
-import { FormsModule } from '@angular/forms';
-import { SearchBookComponent } from './content/search-book/search-book.component';
-import { BookComponent } from './content/search-book/book/book.component';
+import { AppComponent } from "./app.component";
+import { DashboardComponent } from "./dashboard/dashboard.component";
+import { ContentComponent } from "./content/content.component";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { SearchBookComponent } from "./content/search-book/search-book.component";
+import { BookComponent } from "./content/search-book/book/book.component";
+import { HeaderComponent } from "./header/header.component";
+import { ModalComponent } from "./modal/modal.component";
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { BookComponent } from './content/search-book/book/book.component';
     ContentComponent,
     SearchBookComponent,
     BookComponent,
+    HeaderComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,6 +29,7 @@ import { BookComponent } from './content/search-book/book/book.component';
     FormsModule,
     HttpClientModule,
     MatIconModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

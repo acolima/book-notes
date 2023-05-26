@@ -1,0 +1,33 @@
+<div class="modal" *ngIf="showModal">
+  <form [formGroup]="userForm">
+    <input type="text" placeholder="Username" formControlName="username" />
+
+    <input type="password" placeholder="Senha" formControlName="password" />
+
+    <input
+      *ngIf="option === 'register'"
+      type="password"
+      placeholder="Confirme a senha"
+      formControlName="passwordConfirmation"
+    />
+
+    <div class="buttons" [ngSwitch]="option">
+      <ng-container *ngSwitchCase="'register'">
+        <button type="submit" [disabled]="!userForm.valid">Cadastrar</button>
+        <p>
+          Já tem conta? Faça o
+          <span (click)="changeModalView('login')">login</span>
+        </p>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'login'">
+        <button type="submit" [disabled]="!userForm.valid">Entrar</button>
+
+        <p>
+          Não tem conta ainda? Faça o
+          <span (click)="changeModalView('register')">cadastro</span>
+        </p>
+      </ng-container>
+    </div>
+  </form>
+</div>

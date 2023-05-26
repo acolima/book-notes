@@ -1,0 +1,11 @@
+<div class="header">
+  <span (click)="toggleModal()">
+    <button>Entrar</button>
+    |
+    <button>Cadastrar</button>
+  </span>
+
+  <app-modal [showModal]="modal"></app-modal>
+
+  <div class="backdrop" *ngIf="modal" (click)="toggleModal()"></div>
+</div>
