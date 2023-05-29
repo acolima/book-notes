@@ -6,13 +6,34 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./header.component.scss"],
 })
 export class HeaderComponent implements OnInit {
-  modal: boolean = false;
+  showModal: boolean = false;
+  logged: boolean = false;
+  username: string | null = "";
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const username = localStorage.getItem("username");
+    if (username) {
+      this.username = username;
+      this.logged = true;
+    }
+  }
 
   toggleModal() {
-    this.modal = !this.modal;
+    this.showModal = !this.showModal;
+  }
+
+  userLogged() {
+    this.logged = true;
+    this.username = localStorage.getItem("username");
+    this.showModal = false;
+  }
+
+  logout() {
+    localStorage.removeItem("username");
+    localStorage.removeItem("token");
+    this.logged = false;
+    location.reload();
   }
 }

@@ -3,6 +3,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { HttpClientModule } from "@angular/common/http";
 import { MatIconModule } from "@angular/material/icon";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 import { AppComponent } from "./app.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
@@ -29,6 +30,7 @@ import { ModalComponent } from "./modal/modal.component";
     FormsModule,
     HttpClientModule,
     MatIconModule,
+    MatProgressSpinnerModule,
     ReactiveFormsModule,
   ],
   providers: [],

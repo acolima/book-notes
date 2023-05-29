@@ -4,6 +4,9 @@
 .modal {
   background-color: $primary;
 
+  width: 370px;
+  min-height: 170px;
+
   position: absolute;
   right: 27px;
   top: 45px;
@@ -11,6 +14,8 @@
 
   padding: 10px;
   border-radius: 15px;
+
+  @include flex($justifyContent: center);
 
   &:after {
     content: "";
@@ -28,9 +33,11 @@
   }
 
   form {
-    @include flex($direction: column, $gap: 15px);
+    div {
+      @include flex($direction: column, $gap: 15px);
 
-    text-align: center;
+      text-align: center;
+    }
   }
 
   .buttons {
@@ -63,5 +70,16 @@
     span:hover {
       color: $accent;
     }
+  }
+
+  mat-spinner {
+    ::ng-deep circle {
+      stroke: $accent;
+    }
+  }
+
+  .error {
+    color: red;
+    font-size: 12px;
   }
 }

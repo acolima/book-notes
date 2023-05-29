@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Book } from "./book/book.component";
-import { BookService } from "src/app/services/book.service";
+import { GoogleApiService } from "src/app/services/googleApi.service";
 
 export interface SearchResults {
   items: Book[];
@@ -13,7 +13,7 @@ export interface SearchResults {
   styleUrls: ["./search-book.component.scss"],
 })
 export class SearchBookComponent implements OnInit {
-  constructor(private bookService: BookService) {}
+  constructor(private googleApiService: GoogleApiService) {}
 
   books: Book[] | undefined = [];
   bookName: string = "";
@@ -29,7 +29,7 @@ export class SearchBookComponent implements OnInit {
   searchBook() {
     this.loading = true;
     this.books = [];
-    this.bookService.searchBooks(this.bookName).subscribe({
+    this.googleApiService.searchBooks(this.bookName).subscribe({
       next: (data) => {
         this.books = data.items;
         this.noResults = data.totalItems === 0 ? true : false;

@@ -1,17 +1,31 @@
+@import "../styles/mixins";
 @import "../styles/theme";
 
 .header {
   height: 40px;
 
-  padding: 7px;
-
   color: $font-primary;
   font-size: 18px;
+
+  img {
+    width: 36px;
+    height: 36px;
+
+    border-radius: 50%;
+  }
+
+  div {
+    height: 100%;
+    @include flex();
+  }
+
+  mat-icon {
+    cursor: pointer;
+  }
 }
 
 .backdrop {
   width: 100vw;
-  height: 100vh;
 
   position: absolute;
   top: 0;

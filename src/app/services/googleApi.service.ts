@@ -6,7 +6,7 @@ import { environment } from "../../environments/environment";
 @Injectable({
   providedIn: "root",
 })
-export class BookService {
+export class GoogleApiService {
   constructor(private httpClient: HttpClient) {}
 
   apiKey = environment.apiKey;
