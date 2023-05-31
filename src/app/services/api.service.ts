@@ -10,12 +10,18 @@ export class ApiService {
 
   baseUrl = environment.baseUrl;
 
-  login(data: LoginData) {
+  login(data: UserData) {
     return this.httpClient.post<Auth>(`${this.baseUrl}/auth/login`, data);
+  }
+
+  register(data: UserData) {
+    return this.httpClient.post(`${this.baseUrl}/users/register`, data, {
+      responseType: "text",
+    });
   }
 }
 
-interface LoginData {
+interface UserData {
   username: string;
   password: string;
 }

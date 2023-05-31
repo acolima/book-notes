@@ -28,32 +28,61 @@ export class ModalComponent implements OnInit {
   changeModalView(option: string) {
     this.option = option;
     this.userForm.reset();
+    this.errorMessage = "";
   }
 
   handleSubmit() {
-    if (this.option === "login") this.handleLogin();
+    const username = this.userForm.value.username!;
+    const password = this.userForm.value.password!;
+    const passwordConfirmation = this.userForm.value.passwordConfirmation!;
+
+    this.errorMessage = "";
+
+    if (this.option === "login") {
+      this.handleLogin(username, password);
+    } else {
+      this.handleRegister(username, password, passwordConfirmation);
+    }
   }
 
-  handleLogin() {
+  handleLogin(username: string, password: string) {
     this.loading = true;
-    this.apiService
-      .login({
-        username: this.userForm.value.username!,
-        password: this.userForm.value.password!,
-      })
-      .subscribe({
-        next: (data) => {
-          localStorage.setItem("username", data.username);
-          localStorage.setItem("token", data.token);
+    this.apiService.login({ username, password }).subscribe({
+      next: (data) => {
+        localStorage.setItem("username", data.username);
+        localStorage.setItem("token", data.token);
 
-          this.userLogged.emit();
+        this.userLogged.emit();
 
+        this.loading = false;
+      },
+      error: (err) => {
+        this.loading = false;
+        this.errorMessage = err.error;
+      },
+    });
+  }
+
+  handleRegister(
+    username: string,
+    password: string,
+    passwordConfirmation: string
+  ) {
+    if (password === passwordConfirmation) {
+      this.loading = true;
+      this.apiService.register({ username, password }).subscribe({
+        next: () => {
           this.loading = false;
+          this.option = "login";
+          this.userForm.reset();
         },
         error: (err) => {
           this.loading = false;
           this.errorMessage = err.error;
         },
       });
+    } else {
+      this.errorMessage = "As senhas não coincidem";
+    }
   }
 }
