@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from "@angular/core";
-import { DashboardService } from "../services/dashboard.service";
+import { BooksService, Categories } from "../services/books.service";
 
 @Component({
   selector: "app-dashboard",
@@ -9,17 +9,23 @@ import { DashboardService } from "../services/dashboard.service";
 export class DashboardComponent implements OnInit {
   @Output() page = new EventEmitter<string>();
 
-  books = {
-    read: 0,
-    toRead: 0,
-    reading: 0,
-    have: 0,
-  };
+  books: Categories = { read: 0, toRead: 0, reading: 0, have: 0 };
 
-  constructor(private dashboardService: DashboardService) {}
+  constructor(private booksService: BooksService) {}
 
   ngOnInit(): void {
-    this.dashboardService.getTeste().subscribe((t) => (this.books = t));
+    this.getBooks();
+  }
+
+  getBooks() {
+    this.booksService.getBooks().subscribe({
+      next: (data) => {
+        this.books = data;
+      },
+      error: (err) => {
+        console.error(err);
+      },
+    });
   }
 
   changePage(name: string) {
