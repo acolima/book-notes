@@ -7,7 +7,7 @@ import { BooksService, Categories } from "../services/books.service";
   styleUrls: ["./dashboard.component.scss"],
 })
 export class DashboardComponent implements OnInit {
-  @Output() page = new EventEmitter<string>();
+  @Output() setPage = new EventEmitter<string>();
 
   books: Categories = { read: 0, toRead: 0, reading: 0, have: 0 };
 
@@ -29,6 +29,6 @@ export class DashboardComponent implements OnInit {
   }
 
   changePage(name: string) {
-    this.page.emit(name);
+    this.setPage.emit(name);
   }
 }

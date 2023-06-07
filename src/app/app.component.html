@@ -2,11 +2,8 @@
   <app-header></app-header>
 
   <div>
-    <app-dashboard (page)="changePageName($event)"></app-dashboard>
+    <app-dashboard (setPage)="changePageName($event)"></app-dashboard>
 
-    <app-content
-      [page]="page"
-      (homePage)="changePageName('read')"
-    ></app-content>
+    <app-content [page]="page"></app-content>
   </div>
 </div>

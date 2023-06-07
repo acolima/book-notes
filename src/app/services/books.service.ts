@@ -12,19 +12,13 @@ export class BooksService {
   token = localStorage.getItem("token");
 
   getBooks() {
-    return this.httpClient.get<Categories>(`${this.baseUrl}/books/4`, {
+    return this.httpClient.get<Categories>(`${this.baseUrl}/books/dashboard`, {
       headers: { Authorization: `Bearer ${this.token}` },
     });
   }
 
   getBooksByCategory(category: string) {
-    return this.httpClient.get<Categories>(`${this.baseUrl}/books/4/${category}`, {
-      headers: { Authorization: `Bearer ${this.token}` },
-    });
-  }
-
-  getBooksIfHave() {
-    return this.httpClient.get<Categories>(`${this.baseUrl}/books/4/have`, {
+    return this.httpClient.get<Book[]>(`${this.baseUrl}/books/${category}`, {
       headers: { Authorization: `Bearer ${this.token}` },
     });
   }
@@ -37,18 +31,12 @@ export interface Categories {
   have: number;
 }
 
-export interface Books {
-  book: {
-    id: string;
-    title: string;
-    author: string[];
-    coverUrl?: string;
-    description?: string;
-    pageCount: number;
-  };
-  bookId: string;
-  category: string;
+export interface Book {
+  id: string;
+  title: string;
+  author: string[];
+  coverUrl?: string;
+  description?: string;
+  pageCount: number;
   have: boolean;
-  modifyAt: Date;
-  userId: number;
 }
