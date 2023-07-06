@@ -7,12 +7,13 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 import { AppComponent } from "./app.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
-import { ContentComponent } from "./content/content.component";
+import { ContentComponent } from "./pages/content/content.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { SearchBookComponent } from "./content/search-book/search-book.component";
-import { BookComponent } from "./content/search-book/book/book.component";
+import { SearchBookComponent } from "./pages/search-book/search-book.component";
+import { BookResultComponent } from "./pages/search-book/book-result/book-result.component";
 import { HeaderComponent } from "./header/header.component";
 import { ModalComponent } from "./modal/modal.component";
+import { AppRoutingModule } from "./app-routing.module";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { ModalComponent } from "./modal/modal.component";
     DashboardComponent,
     ContentComponent,
     SearchBookComponent,
-    BookComponent,
+    BookResultComponent,
     HeaderComponent,
     ModalComponent,
   ],
@@ -32,6 +33,7 @@ import { ModalComponent } from "./modal/modal.component";
     MatIconModule,
     MatProgressSpinnerModule,
     ReactiveFormsModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

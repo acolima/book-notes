@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Book } from "./book/book.component";
+import { Book } from "./book-result/book-result.component";
 import { GoogleApiService } from "src/app/services/googleApi.service";
 
 export interface SearchResults {

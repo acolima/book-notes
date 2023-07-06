@@ -17,7 +17,7 @@
       <div class="skeleton-book"></div>
     </div>
 
-    <app-book [book]="book" *ngFor="let book of books"></app-book>
+    <app-book-result [book]="book" *ngFor="let book of books"></app-book-result>
 
     <div class="no-results" *ngIf="noResults">
       <img src="../../../assets/images/no-results.jpg" alt="no results found" />

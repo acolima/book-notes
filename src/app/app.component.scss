@@ -18,7 +18,8 @@
   }
 }
 
-::ng-deep app-content {
+::ng-deep app-content,
+::ng-deep app-search-book {
   height: 90vh;
 
   @include flex(column, space-between);

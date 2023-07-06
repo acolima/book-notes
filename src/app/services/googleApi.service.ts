@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { SearchResults } from "../content/search-book/search-book.component";
+import { SearchResults } from "../pages/search-book/search-book.component";
 import { environment } from "../../environments/environment";
 
 @Injectable({

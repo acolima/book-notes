@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { BooksService, Categories } from "../services/books.service";
 
 @Component({
@@ -7,8 +7,6 @@ import { BooksService, Categories } from "../services/books.service";
   styleUrls: ["./dashboard.component.scss"],
 })
 export class DashboardComponent implements OnInit {
-  @Output() setPage = new EventEmitter<string>();
-
   books: Categories = { read: 0, toRead: 0, reading: 0, have: 0 };
 
   constructor(private booksService: BooksService) {}
@@ -26,9 +24,5 @@ export class DashboardComponent implements OnInit {
         console.error(err);
       },
     });
-  }
-
-  changePage(name: string) {
-    this.setPage.emit(name);
   }
 }

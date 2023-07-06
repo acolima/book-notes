@@ -1,9 +1,8 @@
-@import "../styles/mixins";
-@import "../styles/theme";
+@import "../../styles/mixins";
+@import "../../styles/theme";
 
 .display,
-.carousel,
-app-search-book {
+.carousel {
   width: 100%;
 
   background-color: white;
@@ -21,8 +20,6 @@ app-search-book {
   &__info {
     @include flex($direction: column);
 
-    background-color: lightb;
-
     flex: 1;
 
     color: $font-primary;
@@ -36,6 +33,7 @@ app-search-book {
 
     &-authors {
       font-size: 20px;
+
       @include flex($justifyContent: space-evenly);
     }
 
@@ -45,6 +43,7 @@ app-search-book {
 
     button {
       width: 100px;
+
       padding: 10px;
       border-radius: 30px;
     }
@@ -121,8 +120,4 @@ app-search-book {
 
     transition: all 0.5s smooth;
   }
-}
-
-app-search-book {
-  height: 100%;
 }

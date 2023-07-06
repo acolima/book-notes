@@ -1,0 +1,37 @@
+<div class="display">
+  <div class="display__info">
+    <p class="display__info-title">{{ bookDisplay.title }}</p>
+
+    <div class="display__info-authors">
+      <span *ngFor="let author of bookDisplay.author"> {{ author }} </span>
+    </div>
+
+    <div class="display__info-description" *ngIf="bookDisplay.description">
+      {{ bookDisplay.description }}
+    </div>
+
+    <button
+      class="btn-have-book"
+      (click)="toggleHave()"
+      [ngClass]="bookDisplay.have ? 'selected' : ''"
+    >
+      Tenho
+    </button>
+
+    <button class="btn-show-notes">Mostrar notas</button>
+  </div>
+
+  <div class="display__cover">
+    <img [src]="bookDisplay.coverUrl" [alt]="bookDisplay.title" />
+  </div>
+</div>
+
+<div class="carousel">
+  <div
+    *ngFor="let book of books; index as i"
+    class="carousel__cover"
+    (click)="changeBook(i)"
+  >
+    <img [src]="book.coverUrl" [alt]="book.title" />
+  </div>
+</div>

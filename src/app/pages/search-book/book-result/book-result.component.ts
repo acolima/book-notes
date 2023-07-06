@@ -15,11 +15,11 @@ export interface Book {
 }
 
 @Component({
-  selector: "app-book",
-  templateUrl: "./book.component.html",
-  styleUrls: ["./book.component.scss"],
+  selector: "app-book-result",
+  templateUrl: "./book-result.component.html",
+  styleUrls: ["./book-result.component.scss"],
 })
-export class BookComponent implements OnInit {
+export class BookResultComponent implements OnInit {
   @Input() book: Book | undefined;
 
   title: string | undefined = "";

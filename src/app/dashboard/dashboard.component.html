@@ -2,11 +2,11 @@
   <div class="dashboard__title">
     Dashboard
 
-    <mat-icon (click)="changePage('search')">search</mat-icon>
+    <mat-icon routerLink="/search">search</mat-icon>
   </div>
 
   <div class="dashboard__items">
-    <button class="item" (click)="changePage('read')">
+    <button class="item" routerLink="/read">
       <div>
         <span class="number">{{ books.read }}</span>
         <span>Livros</span>
@@ -14,7 +14,7 @@
       Lidos
     </button>
 
-    <button class="item" (click)="changePage('reading')">
+    <button class="item" routerLink="/reading">
       <div>
         <span class="number">{{ books.reading }}</span>
         <span>Livros</span>
@@ -22,7 +22,7 @@
       Lendo
     </button>
 
-    <button class="item" (click)="changePage('to-read')">
+    <button class="item" routerLink="/to-read">
       <div>
         <span class="number">{{ books.toRead }}</span>
         <span>Livros</span>
@@ -30,7 +30,7 @@
       Quero Ler
     </button>
 
-    <button class="item" (click)="changePage('have')">
+    <button class="item">
       <div>
         <span class="number">{{ books.have }}</span>
         <span>Livros</span>

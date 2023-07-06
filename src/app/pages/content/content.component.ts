@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, SimpleChanges } from "@angular/core";
-import { Book, BooksService } from "../services/books.service";
+import { Book, BooksService } from "../../services/books.service";
 
 @Component({
   selector: "app-content",
