@@ -1,7 +1,12 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { SearchResults } from "../pages/search-book/search-book.component";
 import { environment } from "../../environments/environment";
+import { Book } from "../pages/search-book/book-result/book-result.component";
+
+export interface SearchResults {
+  items: Book[];
+  totalItems: number;
+}
 
 @Injectable({
   providedIn: "root",

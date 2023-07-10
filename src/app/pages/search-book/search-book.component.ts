@@ -2,11 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { Book } from "./book-result/book-result.component";
 import { GoogleApiService } from "src/app/services/googleApi.service";
 
-export interface SearchResults {
-  items: Book[];
-  totalItems: number;
-}
-
 @Component({
   selector: "app-search-book",
   templateUrl: "./search-book.component.html",

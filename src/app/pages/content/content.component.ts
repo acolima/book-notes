@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, SimpleChanges } from "@angular/core";
 import { Book, BooksService } from "../../services/books.service";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-content",
@@ -7,11 +8,10 @@ import { Book, BooksService } from "../../services/books.service";
   styleUrls: ["./content.component.scss"],
 })
 export class ContentComponent implements OnInit {
-  @Input() page!: string;
+  page: string = "";
+  coverWidth: number = 0;
 
   books: Book[] = [];
-
-  have: boolean = false;
 
   bookDisplay: Book = {
     id: "",
@@ -21,30 +21,22 @@ export class ContentComponent implements OnInit {
     have: false,
   };
 
-  constructor(private booksService: BooksService) {}
+  constructor(private booksService: BooksService, private route: ActivatedRoute) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.page = this.route.snapshot.url[0].path;
+    this.coverWidth = window.innerWidth > 1400 ? 300 : 200;
 
-  ngOnChanges(changes: SimpleChanges) {
-    this.books = [];
-    this.bookDisplay = { id: "", title: "", author: [], pageCount: 0, have: false };
-
-    if (changes["page"].currentValue !== changes["page"].previousValue) {
-      this.booksService.getBooksByCategory(this.page).subscribe((data) => {
-        if (data.length !== 0) {
-          this.books = data;
-          this.bookDisplay = data[0];
-          this.have = this.bookDisplay.have;
-        }
-      });
-    }
+    this.booksService.getBooksByCategory(this.page).subscribe((data) => {
+      if (data.length !== 0) {
+        this.books = data;
+        this.bookDisplay = data[0];
+        console.log(data);
+      }
+    });
   }
 
   changeBook(index: number) {
     this.bookDisplay = this.books[index];
-  }
-
-  toggleHave() {
-    this.bookDisplay.have = !this.bookDisplay.have;
   }
 }

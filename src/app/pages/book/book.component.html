@@ -1,0 +1,21 @@
+<div class="book">
+  <div class="book__info">
+    <p class="book__info-title">{{ book.title }}</p>
+
+    <div class="book__info-authors">
+      <span *ngFor="let author of book.author"> {{ author }} </span>
+    </div>
+
+    <span>{{ book.pageCount }} páginas</span>
+
+    <div class="book__info-description" *ngIf="book.description">
+      {{ book.description }}
+    </div>
+
+    <button class="btn-show-notes">Ver notas</button>
+  </div>
+
+  <div class="book__cover">
+    <img [src]="book.coverUrl" [alt]="book.title" [width]="coverWidth" />
+  </div>
+</div>

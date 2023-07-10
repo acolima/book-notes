@@ -18,7 +18,13 @@ export class BooksService {
   }
 
   getBooksByCategory(category: string) {
-    return this.httpClient.get<Book[]>(`${this.baseUrl}/books/${category}`, {
+    return this.httpClient.get<Book[]>(`${this.baseUrl}/books/category/${category}`, {
+      headers: { Authorization: `Bearer ${this.token}` },
+    });
+  }
+
+  getBookById(id: string) {
+    return this.httpClient.get<Book>(`${this.baseUrl}/books/${id}`, {
       headers: { Authorization: `Bearer ${this.token}` },
     });
   }

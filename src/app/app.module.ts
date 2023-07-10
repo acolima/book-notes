@@ -14,6 +14,7 @@ import { BookResultComponent } from "./pages/search-book/book-result/book-result
 import { HeaderComponent } from "./header/header.component";
 import { ModalComponent } from "./modal/modal.component";
 import { AppRoutingModule } from "./app-routing.module";
+import { BookComponent } from './pages/book/book.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { AppRoutingModule } from "./app-routing.module";
     BookResultComponent,
     HeaderComponent,
     ModalComponent,
+    BookComponent,
   ],
   imports: [
     BrowserModule,
