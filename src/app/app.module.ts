@@ -11,11 +11,9 @@ import { ContentComponent } from "./pages/content/content.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { SearchBookComponent } from "./pages/search-book/search-book.component";
 import { BookResultComponent } from "./pages/search-book/book-result/book-result.component";
-import { HeaderComponent } from "./header/header.component";
-import { ModalComponent } from "./modal/modal.component";
 import { AppRoutingModule } from "./app-routing.module";
-import { BookComponent } from './pages/book/book.component';
-import { AuthComponent } from './pages/auth/auth.component';
+import { BookComponent } from "./pages/book/book.component";
+import { AuthComponent } from "./pages/auth/auth.component";
 
 @NgModule({
   declarations: [
@@ -24,8 +22,6 @@ import { AuthComponent } from './pages/auth/auth.component';
     ContentComponent,
     SearchBookComponent,
     BookResultComponent,
-    HeaderComponent,
-    ModalComponent,
     BookComponent,
     AuthComponent,
   ],
