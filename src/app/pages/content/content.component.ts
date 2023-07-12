@@ -1,6 +1,7 @@
-import { Component, Input, OnInit, SimpleChanges } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Book, BooksService } from "../../services/books.service";
 import { ActivatedRoute } from "@angular/router";
+import { getToken } from "src/utils";
 
 @Component({
   selector: "app-content",
@@ -27,7 +28,9 @@ export class ContentComponent implements OnInit {
     this.page = this.route.snapshot.url[0].path;
     this.coverWidth = window.innerWidth > 1400 ? 300 : 200;
 
-    this.booksService.getBooksByCategory(this.page).subscribe((data) => {
+    const token = getToken();
+
+    this.booksService.getBooksByCategory(token, this.page).subscribe((data) => {
       if (data.length !== 0) {
         this.books = data;
         this.bookDisplay = data[0];

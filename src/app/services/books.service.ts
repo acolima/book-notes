@@ -9,23 +9,22 @@ export class BooksService {
   constructor(private httpClient: HttpClient) {}
 
   baseUrl = environment.baseUrl;
-  token = localStorage.getItem("token");
 
-  getBooks() {
+  getBooks(token: string | null) {
     return this.httpClient.get<Categories>(`${this.baseUrl}/books/dashboard`, {
-      headers: { Authorization: `Bearer ${this.token}` },
+      headers: { Authorization: `Bearer ${token}` },
     });
   }
 
-  getBooksByCategory(category: string) {
+  getBooksByCategory(token: string | null, category: string) {
     return this.httpClient.get<Book[]>(`${this.baseUrl}/books/category/${category}`, {
-      headers: { Authorization: `Bearer ${this.token}` },
+      headers: { Authorization: `Bearer ${token}` },
     });
   }
 
-  getBookById(id: string) {
+  getBookById(token: string | null, id: string) {
     return this.httpClient.get<Book>(`${this.baseUrl}/books/${id}`, {
-      headers: { Authorization: `Bearer ${this.token}` },
+      headers: { Authorization: `Bearer ${token}` },
     });
   }
 }

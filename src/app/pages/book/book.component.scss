@@ -44,15 +44,7 @@
     }
 
     .btn-show-notes {
-      width: 100px;
-
-      padding: 10px;
-      border-radius: 30px;
-
-      background-color: $accent;
-      color: #fff;
-
-      text-align: center;
+      @include default-button;
     }
   }
 

@@ -15,6 +15,7 @@ import { HeaderComponent } from "./header/header.component";
 import { ModalComponent } from "./modal/modal.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { BookComponent } from './pages/book/book.component';
+import { AuthComponent } from './pages/auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { BookComponent } from './pages/book/book.component';
     HeaderComponent,
     ModalComponent,
     BookComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,

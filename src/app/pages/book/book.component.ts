@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { Book, BooksService } from "src/app/services/books.service";
+import { getToken } from "src/utils";
 
 @Component({
   selector: "app-book",
@@ -17,7 +18,9 @@ export class BookComponent implements OnInit {
     this.coverWidth = window.innerWidth > 1400 ? 300 : 200;
 
     const id = this.route.snapshot.paramMap.get("id");
-    this.booksService.getBookById(id!).subscribe({
+    const token = getToken();
+
+    this.booksService.getBookById(token, id!).subscribe({
       next: (data) => {
         this.book = data;
       },

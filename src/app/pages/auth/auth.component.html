@@ -1,0 +1,87 @@
+<div class="auth-page">
+  <form
+    [formGroup]="formLogin"
+    (submit)="handleLogin()"
+    class="auth-page__form"
+  >
+    <div *ngIf="!loading && option === 'login'">
+      <input type="text" placeholder="Username" formControlName="username" />
+
+      <input type="password" placeholder="Senha" formControlName="password" />
+
+      <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+      <div class="buttons" [ngSwitch]="option">
+        <ng-container *ngSwitchCase="'register'">
+          <button type="submit" [disabled]="!formLogin.valid">Cadastrar</button>
+          <p>
+            Já tem conta? Faça o
+            <span (click)="changeForm('login')">login</span>
+          </p>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="'login'">
+          <button type="submit" [disabled]="!formLogin.valid">Entrar</button>
+
+          <p>
+            Não tem conta ainda? Faça o
+            <span (click)="changeForm('register')">cadastro</span>
+          </p>
+        </ng-container>
+      </div>
+    </div>
+
+    <mat-spinner diameter="80" *ngIf="loading"></mat-spinner>
+  </form>
+
+  <form
+    [formGroup]="formRegister"
+    (submit)="handleRegister()"
+    class="auth-page__form"
+  >
+    <div *ngIf="!loading && option === 'register'">
+      <input type="text" placeholder="Username" formControlName="username" />
+
+      <input
+        *ngIf="option === 'register'"
+        type="text"
+        placeholder="Icon"
+        formControlName="iconUrl"
+      />
+
+      <input type="password" placeholder="Senha" formControlName="password" />
+
+      <input
+        *ngIf="option === 'register'"
+        type="password"
+        placeholder="Confirme a senha"
+        formControlName="passwordConfirmation"
+      />
+
+      <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+      <div class="buttons" [ngSwitch]="option">
+        <ng-container *ngSwitchCase="'register'">
+          <button type="submit" [disabled]="!formRegister.valid">
+            Cadastrar
+          </button>
+          <p>
+            Já tem conta? Faça o
+            <span (click)="changeForm('login')">login</span>
+          </p>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="'login'">
+          <button type="submit" [disabled]="!formRegister.valid">Entrar</button>
+
+          <p>
+            Não tem conta ainda? Faça o
+            <span (click)="changeForm('register')">cadastro</span>
+          </p>
+        </ng-container>
+      </div>
+    </div>
+
+    <mat-spinner diameter="80" *ngIf="loading"></mat-spinner>
+  </form>
+</div>

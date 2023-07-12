@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
-import { ApiService } from "../services/api.service";
+import { AuthService } from "../services/auth.service";
 
 @Component({
   selector: "app-modal",
@@ -8,7 +8,7 @@ import { ApiService } from "../services/api.service";
   styleUrls: ["./modal.component.scss"],
 })
 export class ModalComponent implements OnInit {
-  constructor(private fb: FormBuilder, private apiService: ApiService) {}
+  constructor(private fb: FormBuilder, private authService: AuthService) {}
 
   @Input() showModal = false;
   @Output() userLogged = new EventEmitter();
@@ -47,7 +47,7 @@ export class ModalComponent implements OnInit {
 
   handleLogin(username: string, password: string) {
     this.loading = true;
-    this.apiService.login({ username, password }).subscribe({
+    this.authService.login({ username, password }).subscribe({
       next: (data) => {
         localStorage.setItem("username", data.username);
         localStorage.setItem("token", data.token);
@@ -63,14 +63,10 @@ export class ModalComponent implements OnInit {
     });
   }
 
-  handleRegister(
-    username: string,
-    password: string,
-    passwordConfirmation: string
-  ) {
+  handleRegister(username: string, password: string, passwordConfirmation: string) {
     if (password === passwordConfirmation) {
       this.loading = true;
-      this.apiService.register({ username, password }).subscribe({
+      this.authService.register({ username, password }).subscribe({
         next: () => {
           this.loading = false;
           this.option = "login";

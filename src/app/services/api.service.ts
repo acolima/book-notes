@@ -1,32 +1,19 @@
-import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { environment } from "src/environments/environment";
+import { Subject } from "rxjs";
 
 @Injectable({
   providedIn: "root",
 })
 export class ApiService {
-  constructor(private httpClient: HttpClient) {}
+  constructor() {}
 
-  baseUrl = environment.baseUrl;
+  private logged$ = new Subject<boolean>();
 
-  login(data: UserData) {
-    return this.httpClient.post<Auth>(`${this.baseUrl}/auth/login`, data);
+  updateUserLogged() {
+    this.logged$.next(true);
   }
 
-  register(data: UserData) {
-    return this.httpClient.post(`${this.baseUrl}/users/register`, data, {
-      responseType: "text",
-    });
+  getUserLogged() {
+    return this.logged$;
   }
-}
-
-interface UserData {
-  username: string;
-  password: string;
-}
-
-interface Auth {
-  username: string;
-  token: string;
 }
